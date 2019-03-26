@@ -67,10 +67,12 @@ export default {
   methods: {
 
     async clearDate() {
+      // clear date and update data
       this.selectedDate = '';
       await this.loadData();
     },
     async handleInputUpdate() {
+      // hide calenadar and update data
       this.showCalendar = false;
       await this.loadData();
     },
@@ -79,15 +81,16 @@ export default {
         // If range selected - pass query, if not - avoid query
         const usageRange = this.selectedDate && `?from=${Date.parse(this.selectedDate) / 1000}`;
         const { message, data } = await rp.get({ uri: `http://localhost:3000/usage${usageRange || ''}`, json: true });
-        // check response for error
+        // check response for error and avaoid re-rendering
         if (message === 'error') {
           throw new Error(data);
         } else if (this.list !== data) {
           this.displayTop = !_.isEmpty(data);
           this.list = data;
+          // extreact data fro UI from server response
           const { totalPerLabel, totalStreamed, totalPerTrack } = _.reduce(data, (result, item) => {
             const resultClone = _.clone(result);
-            if (!result.totalPerLabel[item.label]) {
+            if (!resultClone.totalPerLabel[item.label]) {
               resultClone.totalPerLabel[item.label] = 0;
             }
             if (!resultClone.totalPerTrack[item.track_id]) {
