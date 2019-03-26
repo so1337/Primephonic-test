@@ -1,30 +1,26 @@
 # test
 
-#Hi there :)
+# Hi there, Primephonic :)
 
 Quick start
 
-get dependencies
-npm i
+1. **get dependencies**
+```npm i```
 or
-yarn install
+```yarn install```
+2. ***build frontend***
+```npm run build ```
+3. ***start server***
+```npm run start```
+4. ***in browser go to*** 
+```http://localhost:3000```
 
-to build frontend
-npm run build 
+Here's assignment for full stack dev at Primephonic.
+My recruiter told me that assignment would take around 2 hours - so I've not tried to make some endless epic project and made simple stuff that works so to avoid overcoding.
 
-to start server
-npm run start
+I used ```Vue cli``` and ```Express cli``` to create backbone of project.
+Also because project is small - I don't see point in splitting server and client and splitting main Vue component due to - it will result in lesser readability.
 
-in browser go to 
-http://localhost:3000
+Data is stored in data file and interacted with through dataStore module
 
-Here's assigment for full stack dev at Primephonic.
-So as I discussed with my recruter - assigment would take up to 2 hours.
-And so I've not tried to make some endless epic project and made simple stuff that works so to avoid overcoding.
-
-I used VUE cli and EXPRESS cli to create backbone of project.
-Also because project is small - I don't see point of splitting server and client and spliting main VUE component due to it will result in lesser readability
-
-Data is stored in data file and ineracted with thorugh dataStore module
-
-Tested on: Ubuntu 18.10, Node 10.13.0
+Tested on: Ubuntu 18.10, Node 10.13.0, npm 6.8.0, yarn 1.12.3

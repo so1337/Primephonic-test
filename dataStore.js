@@ -7,6 +7,7 @@ let interval;
 
 // method to start interval loop that generates data
 function start() {
+  // 'touch' file
   fs.openSync(fileName, 'a+', (err, fd) => {
     err ? console.log(err) : fs.close(fd);
   });
@@ -45,6 +46,7 @@ function start() {
 
 // clear data file
 function clear() {
+  // 'touch' file
   fs.openSync(fileName, 'a+', (err, fd) => {
     err ? console.log(err) : fs.close(fd);
   });
@@ -54,6 +56,7 @@ function clear() {
 
 // get data from data file
 function get() {
+  // 'touch' file
   fs.openSync(fileName, 'a+', (err, fd) => {
     err ? console.log(err) : fs.close(fd);
   });
