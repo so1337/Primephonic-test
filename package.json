@@ -1,0 +1,35 @@
+{
+  "name": "Primephonic-test-app",
+  "version": "0.0.0",
+  "author": "Nikita Lisnyak",
+  "scripts": {
+    "build": "vue-cli-service build",
+    "start": "node ./bin/www",
+    "watch": "vue-cli-service --watch build"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "lodash": "^4.17.11",
+    "material-design-icons-iconfont": "^4.0.5",
+    "morgan": "~1.9.0",
+    "npm": "^6.9.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
+    "vue": "^2.6.6",
+    "vuetify": "^1.5.7"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.5.0",
+    "@vue/cli-plugin-eslint": "^3.5.0",
+    "@vue/cli-service": "^3.5.0",
+    "@vue/eslint-config-airbnb": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.15.3",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-vue": "^5.2.2",
+    "vue-template-compiler": "^2.5.21"
+  }
+}
