@@ -12,7 +12,7 @@ function start() {
     err ? console.log(err) : fs.close(fd);
   });
   /*
-    Random event generation.
+  / Random event generation.
     Generates random streaming events in range from 1st March till current date with 10 sec interval.
   */
   interval = setInterval(() => {

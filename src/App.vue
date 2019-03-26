@@ -4,11 +4,19 @@
 
     <v-layout justify-center row wrap>
       <v-flex xs3 sm3 md3>
-        <div>Total streamed: {{ totalStreamed }} sec</div>
-        <div>Total seconds streamed per label:
-        <div :key="label" v-for="(count, label) in totalPerLabel">{{label}} : {{count}} sec</div>
-        <div>Top streamed track
-          <b>{{mostPopularTrack.track}}</b> was streamed for <b>{{mostPopularTrack.sec}}</b> sec
+        <div v-if="displayTop" >
+          <div>Total streamed: {{ totalStreamed }} sec</div>
+          <div>
+            Total seconds streamed per label:
+          <div :key="label" v-for="(count, label) in totalPerLabel">{{label}} : {{count}} sec</div>
+          </div>
+          <div>
+            Top streamed track
+            <b>{{mostPopularTrack.track}}</b> was streamed for <b>{{mostPopularTrack.sec}}</b> sec
+          </div>
+        </div>
+        <div v-else>
+          No tracks played yet
         </div>
       </v-flex>
     <v-flex xs3 sm3 md3>
@@ -47,22 +55,24 @@ export default {
   data() {
     return {
       list: [],
+      displayTop: false,
       totalStreamed: 0,
       showCalendar: false,
       selectedDate: '',
       totalPerLabel: {},
-      mostPopularTrack: '',
+      mostPopularTrack: {},
       maxDate: new Date(Date.now()).toISOString().split('T')[0],
     };
   },
   methods: {
-    clearDate() {
+
+    async clearDate() {
       this.selectedDate = '';
-      this.loadData();
+      await this.loadData();
     },
-    handleInputUpdate() {
+    async handleInputUpdate() {
       this.showCalendar = false;
-      this.loadData();
+      await this.loadData();
     },
     async loadData() {
       try {
@@ -73,6 +83,7 @@ export default {
         if (message === 'error') {
           throw new Error(data);
         } else if (this.list !== data) {
+          this.displayTop = !_.isEmpty(data);
           this.list = data;
           const { totalPerLabel, totalStreamed, totalPerTrack } = _.reduce(data, (result, item) => {
             const resultClone = _.clone(result);
@@ -90,7 +101,7 @@ export default {
           this.totalPerLabel = totalPerLabel;
           this.totalStreamed = totalStreamed;
           // Sorted arrays are more trustable than "sorted" objects
-          this.mostPopularTrack = totalPerTrack ? _(totalPerTrack).map((sec, track) => ({ track, sec })).orderBy('sec', ['desc']).value()[0] : '';
+          this.mostPopularTrack = !_.isEmpty(totalPerTrack) ? _(totalPerTrack).map((sec, track) => ({ track, sec })).orderBy('sec', ['desc']).value()[0] : {};
         }
       } catch (e) {
         console.log(e);

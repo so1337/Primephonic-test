@@ -18,6 +18,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.disable('etag');
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/', indexRouter);
