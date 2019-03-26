@@ -6,11 +6,11 @@ Quick start
 ```npm i```
 or
 ```yarn install```
-2. ***build frontend***
+2. **build frontend**
 ```npm run build ```
-3. ***start server***
+3. **start server**
 ```npm run start```
-4. ***in browser go to*** 
+4. **in browser go to** 
 ```http://localhost:3000```
 
 Here's assignment for full stack dev at Primephonic.
