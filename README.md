@@ -1,5 +1,3 @@
-# test
-
 # Hi there, Primephonic :)
 
 Quick start
@@ -21,6 +19,7 @@ My recruiter told me that assignment would take around 2 hours - so I've not tri
 I used ```Vue cli``` and ```Express cli``` to create backbone of project.
 Also because project is small - I don't see point in splitting server and client and splitting main Vue component due to - it will result in lesser readability.
 
-Data is stored in data file and interacted with through dataStore module
+Data is stored in data file and interacted with through dataStore module. Timestamp generation for ```stream_started_on``` key is rangelocked between 1st March 2019 and current date so to easily see data difference when using calendar on UI.
+
 
 Tested on: Ubuntu 18.10, Node 10.13.0, npm 6.8.0, yarn 1.12.3
